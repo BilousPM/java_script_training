@@ -1,102 +1,130 @@
-//властивість "prototype" є тільки у функцій. У обєктів є "__proto__"
-// === Class ===
-// Класи прийнято називати з великої літери, а у назві відображати тип об'єкта (іменника), що створюється.
+'use strict';
 
-const Car = function (config = {}) {
-  // this всередині конструктора буде посилатися на новостворений об'єкт
-  console.log(this);
-  console.log(config);
-  //деструктуруєм обєкт параметрів ⬇️
-  const { brand, model, price, color } = config;
-  this.brand = brand;
-  this.model = model;
-  this.color = color;
-  this.price = price;
-  //під час створення нового обєкта в властивості this.__proto__ на обєкт Car.prototype. Тобто Car.prototype - це ПРОТОТИП майбутнього обЄкту (ЕКЗЕМПЛЯРУ)
-};
-console.log(Car.prototype);
+class Car1 {
+  static dealer = 'GM';
 
-Car.prototype.changePrise = function (newPrice) {
-  this.price = newPrice;
-};
+  static logInfo(carObj) {
+    console.log('🚀 ~ Car1 ~ carOb:', carObj);
+  }
 
-//створення екземпляру класу ⬇️
-const myCar = new Car({
-  //це обєкт параметрів
-  brand: 'Audi',
-  model: 'TT',
-  color: 'red',
-  price: 33500,
-});
-// Результат виклику new Car() - це пустий об'єкт, який називається екземпляром класу, тому що містить дані і поведінку, що описуються класом. ⬇️
-console.log(myCar);
+  #carID = 'F150haj8695';
+  #privatProperties = 'test';
 
-const myCar2 = new Car({
+  constructor(config = {}) {
+    const { brand, model, price, color, id } = config;
+    this.brand = brand;
+    this._model = model;
+    this.color = color;
+    this.price = price;
+  }
+
+  changePrise(newPrice) {
+    this.price = newPrice;
+  }
+
+  get model() {
+    return this._model;
+  }
+
+  set model(newModel) {
+    this._model = newModel;
+  }
+
+  get id() {
+    return this.#carID;
+  }
+}
+
+console.dir(Car1);
+
+const carInstant = new Car1({
   brand: 'Ford',
   model: 'F150',
   color: 'black',
   price: 42300,
 });
+console.log(carInstant.id);
+console.log(carInstant.model);
+Car1.logInfo(carInstant);
+console.log(carInstant);
+carInstant.model = 'F150 Raptor';
+console.log(carInstant.model);
+console.log(carInstant);
 
-myCar2.changePrise(55000);
-console.log(myCar2);
+//---------------- Наслідування ------------
 
-const myCar3 = new Car({
-  brand: 'Jeep',
-  model: 'Grand Cerokee',
-  color: 'Dark Blue',
-  price: 55200,
+class Hero {
+  constructor({ name = 'hero', xp = 0 } = {}) {
+    this.name = name;
+    this.xp = xp;
+  }
+  gainXp(amount) {
+    console.log(`${this.name} get ${amount} expiriens`);
+    this.xp += amount;
+  }
+}
+
+class Warrior extends Hero {
+  constructor({ weapon, ...restProps } = {}) {
+    super({ restProps }); //визов конструктора функції Hero
+
+    this.weapon = weapon;
+  }
+
+  attack() {
+    console.log(`${this.name} attack with ${this.weapon}`);
+  }
+}
+
+class Mage extends Hero {
+  constructor({ spells = [], ...restProps } = {}) {
+    super({ restProps });
+    this.spells = spells;
+  }
+  cast() {
+    console.log(`${this.name} do something there 🥶😱`);
+  }
+}
+const erik = new Warrior({ name: 'Erik', xp: 100, weapon: 'alibarda' });
+console.log(erik);
+erik.attack();
+erik.gainXp(38);
+console.log(erik);
+
+const siroja = new Mage({
+  name: 'Siroja',
+  xp: 200,
+  spells: ['fireboll', 'iceboll'],
 });
 
-const myCar4 = new Car();
+console.log(siroja);
+siroja.cast();
+siroja.gainXp(876);
 
-console.log(myCar);
-console.log(myCar2);
-console.log(myCar3);
-console.log(myCar4);
+class Berserk extends Warrior {
+  constructor({ warcry, ...restProps } = {}) {
+    super(restProps);
+    this.warcry = warcry;
+  }
+  babyRage() {
+    console.log(this.warcry);
+  }
+}
 
-//-----------------------------
-
-const UsaSitizen = function ({ name, lastname, age, gender } = {}) {
-  this.name = name;
-  this.lastname = lastname;
-  this.age = age;
-  this.gender = gender;
-};
-
-UsaSitizen.prototype.changeAge = function (newAge) {
-  this.age = newAge;
-};
-
-const petro = new UsaSitizen({
-  name: 'Petro',
-  lastname: 'Bilous',
-  age: 39,
-  gender: 'male',
+const matvii = new Berserk({
+  name: 'Matvii',
+  xp: 900,
+  weapon: 'axe',
+  warcry: 'waaaaaaaa',
 });
+matvii.babyRage();
+matvii.attack();
+matvii.gainXp(1000);
+console.log(matvii);
 
-const nadiia = new UsaSitizen({
-  name: 'Nadiia',
-  lastname: 'Bilous',
-  age: 35,
-  gender: 'female',
-});
+console.log(erik.__proto__ === Warrior.prototype);
+console.log(Object.getPrototypeOf(erik) === Warrior.prototype);
+console.log('🚀 ~ Warrior.prototype:', Warrior.prototype);
+console.log(Warrior.prototype.__proto__ === Hero.prototype);
 
-console.log(petro);
-
-nadiia.changeAge(35);
-console.log(nadiia);
-
-//Статічні властивості і методи ;
-UsaSitizen.loginfo = function (obj) {
-  console.log(obj);
-};
-
-console.dir(UsaSitizen);
-
-UsaSitizen.loginfo(myCar2);
-
-//це все також статичні методи;
-// Object.keys();
-// Object.values();
-// Math.max();
+console.log(Hero.prototype.__proto__ === Object.prototype);

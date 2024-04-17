@@ -1,1 +1,28 @@
-@import '~node_modules/modern-normalize/modern-normalize.css';/*# sourceMappingURL=index.css.map */
+@import '~node_modules/modern-normalize/modern-normalize.css'; /*# sourceMappingURL=index.css.map */
+
+h1 {
+  color: teal;
+}
+
+.site-nav__link {
+  color: blue;
+}
+
+.site-nav__current {
+  list-style: none;
+}
+.site-nav__link {
+  margin-bottom: 5px;
+  display: inline-block;
+  color: blueviolet;
+  border: 2px solid black;
+  padding: 5;
+}
+
+.site-nav__link__curent {
+  color: darkred;
+}
+
+.site-nav__link__visited {
+  color: yellowgreen;
+}
