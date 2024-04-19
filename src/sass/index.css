@@ -26,3 +26,8 @@ h1 {
 .site-nav__link__visited {
   color: yellowgreen;
 }
+.js-button {
+  padding: 10px;
+  border-radius: 5;
+  background-color: lightgreen;
+}

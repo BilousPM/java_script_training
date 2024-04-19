@@ -39,7 +39,49 @@
     <div class="js-color-picker"></div>
     <div class="js-products"></div>
 
+    <!-- подія сабміту форми -->
+    <form class="js-register-form" autocomplete="off">
+      <div role="group">
+        <label>
+          email:
+          <input type="email" name="email" />
+        </label>
+        <label>password <input type="password" name="password" /></label>
+      </div>
+      <br />
+      <div rolle="group">
+        <b>subscription type</b>
+        <label>
+          <input type="radio" name="subscription" value="free" />Free</label
+        >
+        <label>
+          <input type="radio" name="subscription" value="basic" />Basic</label
+        >
+        <label>
+          <input type="radio" name="subscription" value="pro" />Pro</label
+        >
+      </div>
+      <br />
+      <button type="submit">submit</button>
+    </form>
+    <!-- Обєкт ссилок Події інпутів -->
+    <div>
+      <label
+        >name:
+        <input type="text" class="js-input-name" />
+      </label>
+      <input type="checkbox" name="licens" class="js-checkbox" />
+      <button type="button" class="js-btn" disabled>
+        accept: <span class="js-span"></span> ??
+      </button>
+    </div>
+
+    <!-- події клавіатури -->
+    <button class="js-clear">Clear</button>
+    <p class="js-output output"></p>
+
     <!-- lesson6 -->
-    <script type="module" src="./js/lesson-6/dom.js"></script>
+    <!-- <script type="module" src="./js/lesson-6/dom.js"></script> -->
+    <script type="module" src="./js/lesson-6/events.js"></script>
   </body>
 </html>
