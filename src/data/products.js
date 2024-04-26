@@ -32,3 +32,5 @@ export default [
     onSale: false,
   },
 ];
+
+// import products from '../../data/products';

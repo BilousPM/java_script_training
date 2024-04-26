@@ -56,7 +56,7 @@ magicBtn.addEventListener('click', () => {
 });
 
 const currentPageUrl = '/contact';
-const linkEl = document.querySelector(
+const linkEl = document.  (
   `.site-nav__link[href='${currentPageUrl}']`
 );
 

@@ -1,4 +1,7 @@
 @import '~node_modules/modern-normalize/modern-normalize.css'; /*# sourceMappingURL=index.css.map */
+body {
+  padding: 20px;
+}
 
 h1 {
   color: teal;
@@ -30,4 +33,34 @@ h1 {
   padding: 10px;
   border-radius: 5;
   background-color: lightgreen;
+}
+.color-box {
+  margin-top: 20px;
+  display: flex;
+  gap: 15;
+  flex-wrap: wrap;
+}
+
+.color-box div:hover {
+  outline: 4px solid black;
+  border-radius: 5px;
+}
+
+.color {
+  width: 60px;
+  height: inherit;
+  font-size: 12px;
+  text-align: center;
+  outline: 2px solid black;
+}
+
+.current {
+  outline: 4px solid black;
+  border-radius: 5px;
+  scale: 1.2;
+  outline-color: white;
+}
+
+.section {
+  text-align: center;
 }

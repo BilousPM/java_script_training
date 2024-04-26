@@ -1,0 +1,15 @@
+export default [
+  { label: 'HTML' },
+  { label: 'CSS' },
+  { label: 'React' },
+  { label: 'Java' },
+  { label: 'JavaScript' },
+  { label: 'Node.js' },
+  { label: 'Next.js' },
+  { label: 'Mobx' },
+  { label: 'Redux' },
+  { label: 'GraphQI' },
+  { label: 'PostgreSQL' },
+  { label: 'MongoDB' },
+  { label: 'Vue' },
+];

@@ -1,5 +1,6 @@
 // addEventListener('event', callback);
 // removeEventListener('event', callback)
+// addEventListener('event', callback, {once: true}) - віконає колбек одін ра, і зніме регістрацію функ
 
 const magicBtnRef = document.querySelector('.js-button');
 magicBtnRef.addEventListener('click', handleMagicButtonClick);
@@ -26,6 +27,8 @@ function onMagicButtonClick(event) {
 const editEventBtnRef = document.querySelector('button[data-action=edit]');
 const addEventBtnRef = document.querySelector('button[data-action=add]');
 const removeEventBtnRef = document.querySelector('button[data-action=remove]');
+
+// подія 'load'  - кінець завантаження картинки
 
 addEventBtnRef.addEventListener('click', event => {
   console.log('adds events listner ');
@@ -55,6 +58,7 @@ function hendleFormSubmit(event) {
 
   const formData = new FormData(event.currentTarget);
   // робота з данними всієї форми.
+  console.log(formData);
   formData.forEach((value, name) => {
     console.log('🚀 ~ formData.forEach ~ name:', name);
     console.log('🚀 ~ formData.forEach ~ value:', value);
