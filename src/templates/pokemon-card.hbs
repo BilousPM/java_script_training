@@ -1,0 +1,15 @@
+<div class='csrd'>
+  <div class='card-img-top'>
+    <img src='{{sprites.front_default}}' alt='' srcset='' />
+  </div>
+  <div class='card-body'>
+    <h2 class='card-title'>Name: {{name}}</h2>
+    <p class='card-text'>Weight: {{weight}}</p>
+    <p class='card-text'>Hight: {{height}}</p>
+    <p class='card-text'><b>Вміння</b></p>
+    <ul class='list-group'></ul>
+    {{#each abilities}}
+      <li class='list-group-item'>{{ability.name}}</li>
+    {{/each}}
+  </div>
+</div>
