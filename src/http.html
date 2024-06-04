@@ -4,11 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HTTP</title>
-    <!-- <link rel="stylesheet" href="css/common.css" /> -->
+    <link rel="stylesheet" href="./sass/index.css" />
   </head>
   <body>
     <a href="./index.html">back to home</a>
 
-    <script src="../src/js/lesson-10/http.js" type="module"></script>
+    <form class="js-search-form">
+      <div class="form-group">
+        <input type="text" class="form-control" name="query" />
+      </div>
+
+      <button type="submit">Search Pokemon</button>
+    </form>
+
+    <div class="js-card-container"></div>
+    <!-- <button class="add-mor-btn" type="button" disabled>ADD MOR</button> -->
+
+    <div>
+      <form class="js-form">
+        <div class="form-group">
+          <label class="sr-only"
+            ><input
+              type="text"
+              class="form-control"
+              name="queryNews"
+              id="searchQery"
+              placeholder="what is looking for"
+              autocomplete="off"
+          /></label>
+        </div>
+        <button type="submit" class="btn">FIND</button>
+      </form>
+      <ul class="js-articles-container"></ul>
+      <button type="button" class="js-load-mor" data-action="load-more">
+        <span class="spiner" role="status" aria-hidden="true"></span
+        ><span class="label">Show mor</span>
+      </button>
+    </div>
+
+    <!-- <script src="../src/js/lesson-10/http.js" type="module"></script> -->
+    <script src="../src/js/lesson-10/pagination.js" type="module"></script>
   </body>
 </html>
